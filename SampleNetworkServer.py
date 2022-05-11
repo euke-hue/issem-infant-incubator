@@ -28,7 +28,7 @@ class SmartNetworkThermometer (threading.Thread) :
         self.serverSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
         self.serverSocket.bind(("127.0.0.1", port))
         fcntl.fcntl(self.serverSocket, fcntl.F_SETFL, os.O_NONBLOCK)
-
+        print("running smartnetworkthermometer w/ source:", self.source)
         self.deg = "K"
 
     def setSource(self, source) :
