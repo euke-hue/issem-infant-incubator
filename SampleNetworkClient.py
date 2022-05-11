@@ -13,6 +13,7 @@ import rsa
 
 class SimpleNetworkClient :
     def __init__(self, port1, port2) :
+        print("creating SimpleNetworkClient from SampleNetworkClient")
         self.fig, self.ax = plt.subplots()
         now = time.time()
         self.lastTime = now
@@ -34,6 +35,7 @@ class SimpleNetworkClient :
         self.ani2 = animation.FuncAnimation(self.fig, self.updateIncTemp, interval=500)
 
     def updateTime(self) :
+        print("running updateTime from SampleClient")
         now = time.time()
         if math.floor(now) > math.floor(self.lastTime) :
             t = time.strftime("%H:%M:%S", time.localtime(now))
@@ -45,6 +47,7 @@ class SimpleNetworkClient :
             plt.title(time.strftime("%A, %Y-%m-%d", time.localtime(now)))
 
     def getTemperatureFromPort(self, p, tok) :
+        print("running getTemperatureFromPort in SampleNetworkClient")
         s = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
         s.sendto(b"%s;GET_TEMP" % tok, ("127.0.0.1", p))
         msg, addr = s.recvfrom(1024)
@@ -52,6 +55,7 @@ class SimpleNetworkClient :
         return (float(m))
 
     def authenticate(self, p, pw) :
+        print("running Authenticate in SampleNetworkClient")
         s = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
         s.sendto(b"AUTH %s" % pw, ("127.0.0.1", p))
         msg, addr = s.recvfrom(1024)
