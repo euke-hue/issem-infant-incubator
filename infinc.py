@@ -44,7 +44,7 @@ class SimpleHeatGenerator :
     def getOutput(self) :
         if self.thermometer :
             if self.thermometer.getTemperature() < self.setTemperature :
-                print("the self power is", power)
+                print(self.power)
                 return self.power
         return 0
 
