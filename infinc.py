@@ -44,7 +44,7 @@ class SimpleHeatGenerator :
     def getOutput(self) :
         if self.thermometer :
             if self.thermometer.getTemperature() < self.setTemperature :
-                print(self.power)
+                print("INFINC - the output from heater ran!!")
                 return self.power
         return 0
 
