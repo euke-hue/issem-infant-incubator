@@ -14,12 +14,14 @@ import threading #Thread
 
 class SimpleThermometer :
     def __init__ (self, source) :
+        print("simpleThermometer with source", source)
         self.source = source
 
     def setSource(self, source) :
         self.source = source
 
     def getTemperature(self) :
+        print("getting temp for simple thermometer source:", source)
         return self.source.getTemperature()
 
 '''
@@ -27,11 +29,13 @@ Very simple heater that turns on and pumps the powerOutput (watts).
 '''
 class SimpleHeatGenerator :
     def __init__ (self, powerOutput, setTemperature, thermometer) :
+        print("simpleHeatGenerater created with thermometer as:", thermometer)
         self.power = powerOutput
         self.setTemperature = setTemperature 
         self.thermometer = thermometer
 
     def setThermometer(self, thermo) :
+        print("setThermometer for SimpleHeatGenerater ran! with thermo as:", thermo)
         self.thermometer = thermo
 
     ''' 
@@ -40,6 +44,7 @@ class SimpleHeatGenerator :
     def getOutput(self) :
         if self.thermometer :
             if self.thermometer.getTemperature() < self.setTemperature :
+                print("the self power is", power)
                 return self.power
         return 0
 
@@ -128,6 +133,7 @@ class SmartThermometer (threading.Thread) :
         self.updatePeriod = updatePeriod
         self.curTemperature = 0
         self.updateTemperature()
+        print("the source for infinc's SmartTHermometer is:", source)
 
     def setSource(self, source) :
         self.source = source
