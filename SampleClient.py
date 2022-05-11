@@ -7,6 +7,7 @@ import math
 
 class SimpleClient :
     def __init__(self, therm1, therm2) :
+        print("creating simple client")
         self.fig, self.ax = plt.subplots()
         now = time.time()
         self.lastTime = now
@@ -25,6 +26,7 @@ class SimpleClient :
         self.ani2 = animation.FuncAnimation(self.fig, self.updateIncTemp, interval=500)
 
     def updateTime(self) :
+        print("running updateTime from SampleClient")
         now = time.time()
         if math.floor(now) > math.floor(self.lastTime) :
             t = time.strftime("%H:%M:%S", time.localtime(now))
@@ -37,6 +39,7 @@ class SimpleClient :
 
 
     def updateInfTemp(self, frame) :
+        print("running updateINFTime from SampleClient")
         self.updateTime()
         self.infTemps.append(self.infTherm.getTemperature()-273)
         #self.infTemps.append(self.infTemps[-1] + 1)
@@ -45,6 +48,7 @@ class SimpleClient :
         return self.infLn,
 
     def updateIncTemp(self, frame) :
+        print("running updateINCTime from SampleClient")
         self.updateTime()
         self.incTemps.append(self.incTherm.getTemperature()-273)
         #self.incTemps.append(self.incTemps[-1] + 1)
